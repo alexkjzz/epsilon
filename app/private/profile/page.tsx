@@ -1,4 +1,4 @@
-// src/app/private/profile/page.tsx
+
 import { fetchUser } from '@/utils/fetchUser';
 import { StatsProps } from '@/app/private/types/stats';
 import Header from '../components/ui/Header';

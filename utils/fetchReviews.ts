@@ -5,18 +5,15 @@ export async function fetchReviews(userId: string): Promise<ReviewProps[]> {
     try {
         const supabase = await createClient();
 
-        // Récupérer les soumissions à examiner
         const { data: reviews, error } = await supabase
             .from('submission')
             .select('id, publication_id, user_id, review_status')
-            .neq('user_id', userId); // Exclure les soumissions de l'utilisateur connecté
-
+            .neq('user_id', userId); 
         if (error) {
             console.error('Error fetching reviews:', error);
             throw new Error('Failed to fetch reviews');
         }
 
-        // Mapper les données pour correspondre au type ReviewProps
         return reviews.map((review) => ({
             id: review.id,
             publicationId: review.publication_id,

@@ -17,7 +17,6 @@ export async function fetchUser() {
             throw new Error('No user is logged in');
         }
 
-        // Récupérer uniquement les données nécessaires depuis la table 'users'
         const { data: userData, error } = await supabase
             .from('users')
             .select('id, email, submission_count, review_count, training_count, role')
@@ -29,7 +28,6 @@ export async function fetchUser() {
             throw new Error('Failed to fetch user data');
         }
 
-        // Retourner les données directement
         return {
             id: userData.id,
             email: userData.email,

@@ -6,5 +6,5 @@ export interface Module {
 export interface Publication {
     id: number;
     name: string;
-    module: Module | Module[]; // Peut être un objet unique ou un tableau
+    module: Module | Module[];
 }
