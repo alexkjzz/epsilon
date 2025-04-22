@@ -18,11 +18,9 @@ if (token_hash && type) {
     token_hash,
     })
     if (!error) {
-    // redirect user to specified redirect URL or root of app
     redirect(next)
     }
 }
 
-// redirect the user to an error page with some instructions
 redirect('/error')
 }

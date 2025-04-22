@@ -17,29 +17,29 @@ export async function fetchUser() {
             throw new Error('No user is logged in');
         }
 
-        // Query the custom 'users' table
-        const { data, error } = await supabase
-            .from('users') // Custom users table
-            .select('id, email, workcount, reviewcount, coursecount, role') // Include new fields
+        // Récupérer uniquement les données nécessaires depuis la table 'users'
+        const { data: userData, error } = await supabase
+            .from('users')
+            .select('id, email, submission_count, review_count, training_count, role')
             .eq('id', user.id)
             .single();
 
         if (error) {
-            console.error('Error fetching user from users table:', error);
-            throw new Error('Failed to fetch user from users table');
+            console.error('Error fetching user data:', error);
+            throw new Error('Failed to fetch user data');
         }
 
-        // Map database fields to camelCase
+        // Retourner les données directement
         return {
-            id: data.id,
-            email: data.email,
-            workCount: data.workcount,
-            reviewCount: data.reviewcount,
-            courseCount: data.coursecount,
-            role: data.role,
+            id: userData.id,
+            email: userData.email,
+            submissionCount: userData.submission_count,
+            reviewCount: userData.review_count,
+            trainingCount: userData.training_count,
+            role: userData.role,
         };
     } catch (err) {
         console.error('Unexpected error:', err);
-        throw new Error('Unexpected error while fetching user');
+        throw new Error('Unexpected error while fetching user data');
     }
 }

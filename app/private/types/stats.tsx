@@ -1,8 +1,7 @@
 export interface StatsProps {
-    id: string;
     email: string;
-    workCount: number;
+    submissionCount: number;
     reviewCount: number;
-    courseCount: number;
+    trainingCount: number;
     role: string;
 }

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { useFormStatus } from 'react-dom';
-import { login } from './actions'; // Assure-toi que ta fonction login fonctionne bien côté serveur
+import { login } from './actions';
 import { useRouter } from 'next/navigation';
 import Header from '@/app/private/components/ui/Header';
 import Footer from '@/app/private/components/ui/Footer';
@@ -28,15 +28,14 @@ export default function LoginForm() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        // Récupérer les données du formulaire
         const formData = new FormData(formRef.current!);
         const result = await login(formData);
 
         if (result?.error) {
             setError(result.error);
         } else {
-            // Si la connexion est réussie, rediriger vers une page privée
-            router.push('/private'); // Redirection vers /private après un login réussi
+            
+            router.push('/private');
         }
     };
 

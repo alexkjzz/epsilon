@@ -15,7 +15,6 @@ export default function DashboardPage() {
     useEffect(() => {
         const supabase = createClient();
 
-        // Fonction pour gérer l'authentification et récupérer l'utilisateur
         async function checkUser() {
             const { data, error } = await supabase.auth.getSession();
 
@@ -29,10 +28,8 @@ export default function DashboardPage() {
             setLoading(false);
         }
 
-        // Appel initial pour vérifier la session de l'utilisateur
         checkUser();
 
-        // Écouteur pour la mise à jour de la session en temps réel
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             if (!session?.user) {
                 router.push('/login');
@@ -42,9 +39,8 @@ export default function DashboardPage() {
             }
         });
 
-        // Nettoyer l'écouteur à la destruction du composant
         return () => {
-            subscription?.unsubscribe(); // Désabonnement de l'écouteur
+            subscription?.unsubscribe();
         };
     }, [router]);
 

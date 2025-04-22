@@ -7,14 +7,19 @@ import UserStatsSection from '../components/UserStatsSection';
 
 export default async function ProfilePage() {
     try {
-        // Récupérer les données de l'utilisateur via fetchUser
         const userData: StatsProps = await fetchUser();
 
         return (
             <div className="flex flex-col min-h-screen font-mono">
                 <Header title="Profile" />
                 <main className="flex-1 px-6 py-8">
-                    <UserStatsSection {...userData} />
+                    <UserStatsSection
+                        email={userData.email}
+                        submissionCount={userData.submissionCount}
+                        reviewCount={userData.reviewCount}
+                        trainingCount={userData.trainingCount}
+                        role={userData.role}
+                    />
                 </main>
                 <Footer />
             </div>
