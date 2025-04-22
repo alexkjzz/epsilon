@@ -29,23 +29,23 @@ export default async function ReviewsPage() {
 
     // Récupérer les soumissions à réviser
     const { data: rawSubmissions, error: submissionsError } = await supabase
-        .from('submissions')
-        .select(
-            `
-            id,
-            user_id,
-            review_status,
-            publication (
-                id,
-                name,
-                module (
-                    id,
-                    name
-                )
-            )
+    .from('submission') // Utilisez le bon nom de table
+    .select(
         `
+        id,
+        user_id,
+        review_status,
+        publication (
+            id,
+            name,
+            module (
+                id,
+                name
+            )
         )
-        .eq('review_status', 'pending'); // Filtrer uniquement les soumissions en attente de révision
+    `
+    )
+    .eq('review_status', 'pending'); // Filtrer uniquement les soumissions en attente de révision
 
     if (submissionsError) {
         console.error('Error fetching submissions:', submissionsError);
@@ -62,9 +62,9 @@ export default async function ReviewsPage() {
                 name: submission.publication.name,
                 module: Array.isArray(submission.publication.module)
                     ? submission.publication.module.map((mod: any) => ({
-                          id: mod.id,
-                          name: mod.name,
-                      }))
+                        id: mod.id,
+                        name: mod.name,
+                    }))
                     : { id: submission.publication.module.id, name: submission.publication.module.name },
             },
         })) || [];
