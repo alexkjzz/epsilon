@@ -69,8 +69,8 @@ Epsilon is an educational application built with **Next.js** and **Supabase**. I
    Rename the `.env.example` file to `.env.local` and add your Supabase keys:
 
    ```env
-   NEXT_PUBLIC_SUPABASE_URL=[Your Supabase URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[Your Supabase Anonymous Key]
+   NEXT_PUBLIC_SUPABASE_URL=https://fkinrtthmbjsafzjstpp.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZraW5ydHRobWJqc2FmempzdHBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNTEyNDcsImV4cCI6MjA2MDgyNzI0N30.dEvtK7ccqiSLgqIchfGOvqQVXd7AZPe_EvxHG6zPizE
    ```
 
 ---
