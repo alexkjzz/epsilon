@@ -60,6 +60,7 @@ Epsilon is an educational application built with **Next.js** and **Supabase**. I
 2. Install dependencies using pnpm:
 
    ```bash
+   npm install -g pnpm
    pnpm install
    ```
 
